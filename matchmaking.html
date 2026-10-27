@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matchmaking & Duo - GameMatch / Arena Amador</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Principal -->
+    <header>
+        <nav aria-label="Navegação Principal">
+            <p><strong>Arena Amador</strong></p>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li><a href="matchmaking.html">Buscar Duo / Time</a></li>
+                <li><a href="torneios.html">Torneios</a></li>
+                <li><a href="meuperfil.html">Meu Perfil</a></li>
+                <li><a href="sobreogrupo.html">Sobre o Grupo</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Encontrar Jogadores & Formação de Equipes</h1>
+        <p style="text-align: center; color: var(--cor-texto-mudo); margin-bottom: 32px;">
+            Filtre por jogo, função e nível técnico para encontrar o parceiro perfeito para sua jogatina.
+        </p>
+
+        <!-- Filtro sem JavaScript utilizando formulário GET -->
+        <section id="cadastro" style="max-width: 100%; margin-bottom: 40px;">
+            <form action="matchmaking.html" method="GET">
+                <fieldset>
+                    <legend>Filtrar Jogadores Amadores</legend>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+                        <div>
+                            <label for="filtro-jogo">Jogo:</label>
+                            <select id="filtro-jogo" name="jogo">
+                                <option value="todos">Todos os Jogos</option>
+                                <option value="freefire">Free Fire (Mobile/Emulador)</option>
+                                <option value="valorant">Valorant Mobile/PC</option>
+                                <option value="lol">League of Legends / Wild Rift</option>
+                                <option value="cs2">Counter-Strike 2</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="filtro-plataforma">Plataforma:</label>
+                            <select id="filtro-plataforma" name="plataforma">
+                                <option value="todas">Mobile e Emulador</option>
+                                <option value="mobile">Somente Mobile</option>
+                                <option value="emulador">Somente Emulador (PC)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="filtro-funcao">Função no Time:</label>
+                            <select id="filtro-funcao" name="funcao">
+                                <option value="todas">Qualquer Função</option>
+                                <option value="rush">Rush / Duelista</option>
+                                <option value="suporte">Suporte / Inciador</option>
+                                <option value="sniper">Sniper / AWP</option>
+                                <option value="capitao">Capitão (IGL)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" style="margin-top: 16px;">Buscar Conexões</button>
+                </fieldset>
+            </form>
+        </section>
+
+        <!-- Lista de Cards de Jogadores -->
+        <section id="como-funciona">
+            <h2>Salas e Anúncios Ativos</h2>
+
+            <article>
+                <h3>VortexGamer <span style="font-size: 12px; color: var(--cor-secundario); font-weight: normal;">• Free Fire (Emulador)</span></h3>
+                <p><strong>Nível:</strong> Mestre (3.400 pts)</p>
+                <p><strong>Função:</strong> Sniper / Suporte</p>
+                <p><strong>Objetivo:</strong> Procuro duo focado em subir pontuação na ranqueada noturna com microfone ativo.</p>
+                <br>
+                <p><a href="#contato-1" style="color: var(--cor-principal); font-weight: 700; text-decoration: none;">+ Convidar para Duo</a></p>
+            </article>
+
+            <article>
+                <h3>Alpha Squad (Lineup +2) <span style="font-size: 12px; color: var(--cor-secundario); font-weight: normal;">• Wild Rift</span></h3>
+                <p><strong>Nível:</strong> Esmeralda / Diamante</p>
+                <p><strong>Função:</strong> Vaga para Suporte e Mid Lane</p>
+                <p><strong>Objetivo:</strong> Treinos diários às 20h para disputar o torneio amador no próximo fim de semana.</p>
+                <br>
+                <p><a href="#contato-2" style="color: var(--cor-principal); font-weight: 700; text-decoration: none;">+ Candidatar-se à Vaga</a></p>
+            </article>
+
+            <article>
+                <h3>ShadowHunter <span style="font-size: 12px; color: var(--cor-secundario); font-weight: normal;">• Valorant</span></h3>
+                <p><strong>Nível:</strong> Platina II</p>
+                <p><strong>Função:</strong> Duelista / Controlador</p>
+                <p><strong>Objetivo:</strong> Jogador amador procurando trio sem toxicidade e focado em evolução de comunicação.</p>
+                <br>
+                <p><a href="#contato-3" style="color: var(--cor-principal); font-weight: 700; text-decoration: none;">+ Convidar para Duo</a></p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Arena Amador / GameMatch. Todos os direitos reservados.</p>
+        <nav aria-label="Links Rodapé">
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li><a href="torneios.html">Torneios</a></li>
+                <li><a href="sobreogrupo.html">Sobre o Grupo</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+</body>
+</html>
