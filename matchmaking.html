@@ -3,110 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matchmaking & Duo - GameMatch / Arena Amador</title>
+    <title>Buscar Duo / Time - Arena Amador</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Cabeçalho Principal -->
     <header>
-    <nav aria-label="Navegação Principal">
-        <p><strong>Arena Amador</strong></p>
-        
-        <!-- Checkbox invisível e botão hambúrguer -->
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="menu-btn" aria-label="Abrir Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+        <nav aria-label="Navegação Principal">
+            <p><strong>Arena Amador</strong></p>
+            
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-btn" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
 
-        <ul>
-            <li><a href="home.html">Início</a></li>
-            <li><a href="matchmaking.html">Buscar Duo / Time</a></li>
-            <li><a href="torneios.html">Torneios</a></li>
-            <li><a href="meuperfil.html">Meu Perfil</a></li>
-            <li><a href="sobreogrupo.html">Sobre o Grupo</a></li>
-        </ul>
-    </nav>
-</header>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li><a href="matchmaking.html">Buscar Duo / Time</a></li>
+                <li><a href="torneios.html">Torneios</a></li>
+                <li><a href="meuperfil.html">Meu Perfil</a></li>
+                <li><a href="sobreogrupo.html">Sobre o Grupo</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-        <h1>Encontrar Jogadores & Formação de Equipes</h1>
-        <p style="text-align: center; color: var(--cor-texto-mudo); margin-bottom: 32px;">
-            Filtre por jogo, função e nível técnico para encontrar o parceiro perfeito para sua jogatina.
-        </p>
+        <h1>Matchmaking & Formação de Equipes</h1>
+        <p>Encontre jogadores e lineups ativas do seu nível exato para jogar agora.</p>
 
-        <!-- Filtro sem JavaScript utilizando formulário GET -->
-        <section id="cadastro" style="max-width: 100%; margin-bottom: 40px;">
+        <!-- Filtros de Busca -->
+        <section id="cadastro" style="margin-bottom: 24px;">
             <form action="matchmaking.html" method="GET">
                 <fieldset>
-                    <legend>Filtrar Jogadores Amadores</legend>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
-                        <div>
-                            <label for="filtro-jogo">Jogo:</label>
-                            <select id="filtro-jogo" name="jogo">
-                                <option value="todos">Todos os Jogos</option>
-                                <option value="freefire">Free Fire (Mobile/Emulador)</option>
-                                <option value="valorant">Valorant Mobile/PC</option>
-                                <option value="lol">League of Legends / Wild Rift</option>
-                                <option value="cs2">Counter-Strike 2</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label for="filtro-plataforma">Plataforma:</label>
-                            <select id="filtro-plataforma" name="plataforma">
-                                <option value="todas">Mobile e Emulador</option>
-                                <option value="mobile">Somente Mobile</option>
-                                <option value="emulador">Somente Emulador (PC)</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label for="filtro-funcao">Função no Time:</label>
-                            <select id="filtro-funcao" name="funcao">
-                                <option value="todas">Qualquer Função</option>
-                                <option value="rush">Rush / Duelista</option>
-                                <option value="suporte">Suporte / Inciador</option>
-                                <option value="sniper">Sniper / AWP</option>
-                                <option value="capitao">Capitão (IGL)</option>
-                            </select>
-                        </div>
+                    <legend>Filtros de Sala</legend>
+                    <div>
+                        <label for="jogo-filtro">Jogo:</label>
+                        <select id="jogo-filtro" name="jogo">
+                            <option value="todos">Todos os Jogos</option>
+                            <option value="ff">Free Fire (Emulador/Mobile)</option>
+                            <option value="valorant">Valorant</option>
+                            <option value="lol">League of Legends</option>
+                        </select>
                     </div>
-                    <button type="submit" style="margin-top: 16px;">Buscar Conexões</button>
+                    <div>
+                        <label for="funcao-filtro">Função:</label>
+                        <select id="funcao-filtro" name="funcao">
+                            <option value="qualquer">Qualquer Função</option>
+                            <option value="duelista">Duelista / Rush</option>
+                            <option value="suporte">Suporte</option>
+                            <option value="sniper">Sniper</option>
+                        </select>
+                    </div>
+                    <button type="submit">Aplicar Filtros</button>
                 </fieldset>
             </form>
         </section>
 
-        <!-- Lista de Cards de Jogadores -->
+        <!-- Lista de Salas Ativas -->
         <section id="como-funciona">
-            <h2>Salas e Anúncios Ativos</h2>
+            <h2>Salas Abertas na Comunidade</h2>
 
             <article>
-                <h3>VortexGamer <span style="font-size: 12px; color: var(--cor-secundario); font-weight: normal;">• Free Fire (Emulador)</span></h3>
-                <p><strong>Nível:</strong> Mestre (3.400 pts)</p>
-                <p><strong>Função:</strong> Sniper / Suporte</p>
-                <p><strong>Objetivo:</strong> Procuro duo focado em subir pontuação na ranqueada noturna com microfone ativo.</p>
+                <h3>VortexGamer <span style="font-size: 12px; color: var(--cor-secundario); font-weight: normal;">• Free Fire</span></h3>
+                <p><strong>Rank:</strong> Mestre (3.400 pts) | <strong>Função:</strong> Sniper</p>
+                <p>Procuro duo sério para subir ranqueada com call no Discord hoje à noite.</p>
                 <br>
-                <p><a href="#contato-1" style="color: var(--cor-principal); font-weight: 700; text-decoration: none;">+ Convidar para Duo</a></p>
+                <a href="meuperfil.html" style="color: var(--cor-secundario); text-decoration: none; font-weight: 600;">+ Enviar Convite para Duo</a>
             </article>
 
             <article>
-                <h3>Alpha Squad (Lineup +2) <span style="font-size: 12px; color: var(--cor-secundario); font-weight: normal;">• Wild Rift</span></h3>
-                <p><strong>Nível:</strong> Esmeralda / Diamante</p>
-                <p><strong>Função:</strong> Vaga para Suporte e Mid Lane</p>
-                <p><strong>Objetivo:</strong> Treinos diários às 20h para disputar o torneio amador no próximo fim de semana.</p>
+                <h3>Alpha Squad <span style="font-size: 12px; color: var(--cor-secundario); font-weight: normal;">• Wild Rift</span></h3>
+                <p><strong>Rank:</strong> Diamante | <strong>Vagas:</strong> +2 Jogadores</p>
+                <p>Fechando lineup para disputar o torneio deste fim de semana. Necessário mic ativo.</p>
                 <br>
-                <p><a href="#contato-2" style="color: var(--cor-principal); font-weight: 700; text-decoration: none;">+ Candidatar-se à Vaga</a></p>
+                <a href="torneios.html" style="color: var(--cor-secundario); text-decoration: none; font-weight: 600;">+ Ver Torneio Relacionado</a>
             </article>
 
             <article>
                 <h3>ShadowHunter <span style="font-size: 12px; color: var(--cor-secundario); font-weight: normal;">• Valorant</span></h3>
-                <p><strong>Nível:</strong> Platina II</p>
-                <p><strong>Função:</strong> Duelista / Controlador</p>
-                <p><strong>Objetivo:</strong> Jogador amador procurando trio sem toxicidade e focado em evolução de comunicação.</p>
+                <p><strong>Rank:</strong> Platina II | <strong>Função:</strong> Controlador</p>
+                <p>Procurando trio focado em melhoria tática e boa comunicação.</p>
                 <br>
-                <p><a href="#contato-3" style="color: var(--cor-principal); font-weight: 700; text-decoration: none;">+ Convidar para Duo</a></p>
+                <a href="meuperfil.html" style="color: var(--cor-secundario); text-decoration: none; font-weight: 600;">+ Enviar Convite para Duo</a>
             </article>
         </section>
     </main>
