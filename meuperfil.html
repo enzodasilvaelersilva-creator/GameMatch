@@ -3,95 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Perfil Gamer - GameMatch / Arena Amador</title>
+    <title>Meu Perfil - Arena Amador</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Cabeçalho Principal -->
-<header>
-    <nav aria-label="Navegação Principal">
-        <p><strong>Arena Amador</strong></p>
-        
-        <!-- Checkbox invisível e botão hambúrguer -->
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="menu-btn" aria-label="Abrir Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+    <header>
+        <nav aria-label="Navegação Principal">
+            <p><strong>Arena Amador</strong></p>
+            
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-btn" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
 
-        <ul>
-            <li><a href="home.html">Início</a></li>
-            <li><a href="matchmaking.html">Buscar Duo / Time</a></li>
-            <li><a href="torneios.html">Torneios</a></li>
-            <li><a href="meuperfil.html">Meu Perfil</a></li>
-            <li><a href="sobreogrupo.html">Sobre o Grupo</a></li>
-        </ul>
-    </nav>
-</header>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li><a href="matchmaking.html">Buscar Duo / Time</a></li>
+                <li><a href="torneios.html">Torneios</a></li>
+                <li><a href="meuperfil.html">Meu Perfil</a></li>
+                <li><a href="sobreogrupo.html">Sobre o Grupo</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
-        <h1>Meu Perfil de Jogador</h1>
+        <h1>Painel do Atleta Amador</h1>
+        <p>Gerencie suas informações, estatísticas de jogo e status de disponibilidade.</p>
 
-        <!-- Cartão do Perfil -->
+        <!-- Informações do Perfil -->
         <section id="sobre">
             <h2>Gamer Tag: ShadowPlayer#2026</h2>
-            <p><strong>Plataforma Principal:</strong> Mobile / Emulador (BlueStacks)</p>
-            <p><strong>Reputação na Comunidade:</strong> ⭐ 4.9 / 5.0 (Excelente parceiro de equipe)</p>
+            <p><strong>Plataforma:</strong> Mobile / Emulador (BlueStacks)</p>
+            <p><strong>Reputação:</strong> ⭐ 4.9 / 5.0 (Excelente Parceiro)</p>
+            <p style="margin-top: 8px;"><a href="matchmaking.html" style="color: var(--cor-secundario); text-decoration: none; font-weight: 600;">Ver Salas Ativas →</a></p>
         </section>
 
-        <!-- Estatísticas e Jogos Vinculados -->
+        <!-- Estatísticas -->
         <section id="como-funciona">
-            <h2>Meus Ranks e Jogos Ativos</h2>
-
+            <h2>Estatísticas por Jogo</h2>
             <article>
                 <h3>Free Fire</h3>
-                <p><strong>Rank Atual:</strong> Mestre (3.250 Pts)</p>
-                <p><strong>Função Preferida:</strong> Rush / Suporte</p>
-                <p><strong>Taxa de Vitória:</strong> 64% nas últimas 50 partidas</p>
+                <p><strong>Rank:</strong> Mestre (3.250 Pts)</p>
+                <p>Vitórias recentes: 64%</p>
             </article>
-
             <article>
                 <h3>Valorant</h3>
-                <p><strong>Rank Atual:</strong> Ouro III</p>
-                <p><strong>Main Agentes:</strong> Sova / Fade</p>
-                <p><strong>Estilo de Jogo:</strong> Tático e Focado em Comunicação</p>
+                <p><strong>Rank:</strong> Ouro III</p>
+                <p>Main Agentes: Sova / Fade</p>
             </article>
-
             <article>
-                <h3>Histórico em Torneios</h3>
-                <p><strong>Campeonatos Jogados:</strong> 4 torneios amadores</p>
-                <p><strong>Melhor Colocação:</strong> 2º Lugar na Copa Amadora #3</p>
-                <p><strong>Status:</strong> Disponível para convites de equipe</p>
+                <h3>Histórico de Torneios</h3>
+                <p>4 campeonatos disputados</p>
+                <p>Melhor resultado: 2º Lugar</p>
             </article>
         </section>
 
-        <!-- Formulário para Atualizar Perfil -->
+        <!-- Editar Perfil -->
         <section id="cadastro">
-            <h2>Atualizar Minhas Informações</h2>
+            <h2>Atualizar Preferências</h2>
             <form action="meuperfil.html" method="POST">
                 <fieldset>
-                    <legend>Editar Perfil Gamer</legend>
-
+                    <legend>Configurações de Perfil</legend>
                     <div>
-                        <label for="bio">Biografia / Apresentação:</label>
-                        <input type="text" id="bio" name="bio" value="Jogador amador focado em campeonatos finais de semana.">
+                        <label for="bio">Biografia / Recado:</label>
+                        <input type="text" id="bio" name="bio" value="Focado em treinos e campeonatos noturnos.">
                     </div>
-
                     <div>
-                        <label for="horario">Horários Disponíveis para Treinar:</label>
+                        <label for="horario">Horário Preferido:</label>
                         <select id="horario" name="horario">
-                            <option value="noite">Noite (19:00 - 23:00)</option>
-                            <option value="tarde">Tarde (13:00 - 18:00)</option>
-                            <option value="madrugada">Madrugada</option>
-                            <option value="fins-de-semana">Apenas Fins de Semana</option>
+                            <option value="noite">Noite (19h - 23h)</option>
+                            <option value="tarde">Tarde</option>
+                            <option value="fds">Apenas Finais de Semana</option>
                         </select>
                     </div>
-
-                    <div>
-                        <button type="submit">Salvar Alterações do Perfil</button>
-                    </div>
+                    <button type="submit">Salvar Alterações</button>
                 </fieldset>
             </form>
         </section>
@@ -103,6 +91,7 @@
             <ul>
                 <li><a href="home.html">Início</a></li>
                 <li><a href="matchmaking.html">Buscar Duo</a></li>
+                <li><a href="torneios.html">Torneios</a></li>
                 <li><a href="sobreogrupo.html">Sobre o Grupo</a></li>
             </ul>
         </nav>
