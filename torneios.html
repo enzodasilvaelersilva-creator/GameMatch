@@ -3,91 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Torneios Amadores - GameMatch / Arena Amador</title>
+    <title>Torneios e Campeonatos - Arena Amador</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Cabeçalho Principal -->
-<header>
-    <nav aria-label="Navegação Principal">
-        <p><strong>Arena Amador</strong></p>
-        
-        <!-- Checkbox invisível e botão hambúrguer -->
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="menu-btn" aria-label="Abrir Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+    <header>
+        <nav aria-label="Navegação Principal">
+            <p><strong>Arena Amador</strong></p>
+            
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-btn" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
 
-        <ul>
-            <li><a href="home.html">Início</a></li>
-            <li><a href="matchmaking.html">Buscar Duo / Time</a></li>
-            <li><a href="torneios.html">Torneios</a></li>
-            <li><a href="meuperfil.html">Meu Perfil</a></li>
-            <li><a href="sobreogrupo.html">Sobre o Grupo</a></li>
-        </ul>
-    </nav>
-</header>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li><a href="matchmaking.html">Buscar Duo / Time</a></li>
+                <li><a href="torneios.html">Torneios</a></li>
+                <li><a href="meuperfil.html">Meu Perfil</a></li>
+                <li><a href="sobreogrupo.html">Sobre o Grupo</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
         <h1>Campeonatos e Ligas Amadoras</h1>
-        <p style="text-align: center; color: var(--cor-texto-mudo); margin-bottom: 32px;">
-            Dispute torneios estruturados e balanceados de acordo com a sua categoria.
-        </p>
+        <p>Inscreva sua equipe ou procure jogadores avulsos para completar seu time nos torneios oficiais.</p>
 
-        <!-- Torneios em Destaque -->
         <section id="campeonatos">
-            <h2>Inscrições Abertas</h2>
+            <h2>Torneios com Inscrições Abertas</h2>
             <ul>
                 <li>
-                    <strong>Copa Amadora Free Fire (Emuladores e Mobile)</strong>
-                    <p style="color: var(--cor-texto-mudo); font-size: 14px; margin-top: 4px;">Formato: Squad 4v4 | Vagas: 28/32 Times</p>
-                    <p style="color: var(--cor-secundario); font-weight: 700; margin-top: 6px;">Premiação: R$ 1.500,00 em prêmios</p>
-                    <br>
-                    <a href="#inscricao" style="color: var(--cor-principal); font-weight: 700; text-decoration: none;">Increver Meu Time →</a>
+                    <strong>Copa Amadora Free Fire (Emuladores)</strong>
+                    <p>Formato: Squad 4v4 | Vagas: 28/32 Times</p>
+                    <p style="color: var(--cor-secundario); font-weight: 600; margin-top: 4px;">Premiação: R$ 1.500,00</p>
                 </li>
-
                 <li>
-                    <strong>Liga Wild Rift - Tier Amador</strong>
-                    <p style="color: var(--cor-texto-mudo); font-size: 14px; margin-top: 4px;">Formato: 5v5 Best of 3 | Vagas: 12/16 Times</p>
-                    <p style="color: var(--cor-secundario); font-weight: 700; margin-top: 6px;">Premiação: Gift Cards + Troféu Digital</p>
-                    <br>
-                    <a href="#inscricao" style="color: var(--cor-principal); font-weight: 700; text-decoration: none;">Increver Meu Time →</a>
+                    <strong>Liga Wild Rift Tier Amador</strong>
+                    <p>Formato: 5v5 | Vagas: 12/16 Times</p>
+                    <p style="color: var(--cor-secundario); font-weight: 600; margin-top: 4px;">Premiação: Gift Cards + Troféu</p>
                 </li>
             </ul>
         </section>
 
-        <!-- Formulário de Inscrição em Torneios -->
+        <!-- Formulário de Inscrição de Equipe -->
         <section id="cadastro">
-            <h2>Inscrever Equipe em um Campeonato</h2>
+            <h2>Inscrever Equipe no Torneio</h2>
             <form action="torneios.html" method="POST">
                 <fieldset>
-                    <legend>Dados da Equipe</legend>
-
+                    <legend>Dados da Inscrição</legend>
                     <div>
-                        <label for="nome-time">Nome da Equipe / Tag:</label>
-                        <input type="text" id="nome-time" name="nome-time" placeholder="Ex: Alpha E-sports" required>
+                        <label for="time">Nome da Equipe:</label>
+                        <input type="text" id="time" name="time" placeholder="Ex: Alpha Esports" required>
                     </div>
-
                     <div>
-                        <label for="torneio-selecionado">Selecione o Campeonato:</label>
-                        <select id="torneio-selecionado" name="torneio">
+                        <label for="campeonato-escolhido">Selecionar Campeonato:</label>
+                        <select id="campeonato-escolhido" name="campeonato">
                             <option value="ff">Copa Amadora Free Fire</option>
-                            <option value="wr">Liga Wild Rift Tier Amador</option>
-                            <option value="cs2">Copa CS2 Amadora</option>
+                            <option value="wr">Liga Wild Rift Amadora</option>
                         </select>
                     </div>
-
                     <div>
-                        <label for="nick-capitao">Nick do Capitão e Contato:</label>
-                        <input type="text" id="nick-capitao" name="nick-capitao" placeholder="Ex: Capitão#1234 (WhatsApp/Discord)" required>
+                        <label for="capitao">Nick do Capitão:</label>
+                        <input type="text" id="capitao" name="capitao" placeholder="Ex: Captain#1234" required>
                     </div>
-
-                    <div>
-                        <button type="submit">Confirmar Inscrição da Equipe</button>
-                    </div>
+                    <button type="submit">Confirmar Inscrição</button>
                 </fieldset>
             </form>
         </section>
