@@ -4,18 +4,22 @@
 :root {
     --cor-principal: #7c3aed;
     --cor-principal-hover: #6d28d9;
+    --cor-principal-active: #5b21b6;
     --cor-secundario: #06b6d4;
+    --cor-secundario-hover: #0891b2;
+    --cor-secundario-active: #0e7490;
     --cor-texto: #f8fafc;
     --cor-texto-mudo: #94a3b8;
     --cor-fundo: #0f172a;
     --cor-card: #1e293b;
     --cor-borda: #334155;
+    --cor-foco: #38bdf8;
     --fonte-principal: 'Inter', system-ui, -apple-system, sans-serif;
     
     --raio-sm: 8px;
     --raio-md: 12px;
     --largura-maxima: 1000px;
-    --transicao-rapida: 0.25s ease;
+    --transicao-suave: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 *, *::before, *::after {
@@ -40,29 +44,70 @@ body {
     overflow-x: hidden;
 }
 
+/* ==========================================================================
+   2. ANIMAÇÕES DE CARREGAMENTO (FADE-IN E SPINNER CSS)
+   ========================================================================== */
+/* Animação Fade-In das Seções */
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 main {
     flex: 1;
     max-width: var(--largura-maxima);
     width: 100%;
     margin: 0 auto;
     padding: 20px 16px;
-    animation: fadeIn 0.35s ease-out;
+    animation: fadeInPage 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Spinner de Carregamento em CSS Puro */
+@keyframes rotateSpinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    width: 36px;
+    height: 36px;
+    margin: 20px auto;
+    border: 4px solid var(--cor-borda);
+    border-top: 4px solid var(--cor-secundario);
+    border-radius: 50%;
+    animation: rotateSpinner 0.8s linear infinite;
 }
 
 /* ==========================================================================
-   2. ACESSIBILIDADE E ESTADOS DE FOCO (Visível com Tab)
+   3. ACESSIBILIDADE E ESTADOS DE FOCO (FOCUS VISÍVEL COM TAB)
    ========================================================================== */
+:focus {
+    outline: none;
+}
+
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
+textarea:focus-visible,
 label:focus-visible {
-    outline: 2px solid var(--cor-secundario);
-    outline-offset: 2px;
+    outline: 3px solid var(--cor-foco) !important;
+    outline-offset: 3px !important;
+    border-radius: var(--raio-sm);
 }
 
 /* ==========================================================================
-   3. CABEÇALHO E MENU HAMBÚRGUER (CSS PURO)
+   4. CABEÇALHO E NAV (MICROINTERAÇÕES)
    ========================================================================== */
 header {
     position: sticky;
@@ -99,17 +144,21 @@ header nav p strong {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 24px;
-    height: 18px;
+    width: 26px;
+    height: 20px;
     cursor: pointer;
     z-index: 1010;
     padding: 2px;
     border-radius: 4px;
-    transition: var(--transicao-rapida);
+    transition: var(--transicao-suave);
 }
 
 .menu-btn:hover span {
     background-color: var(--cor-secundario);
+}
+
+.menu-btn:active span {
+    background-color: var(--cor-principal);
 }
 
 .menu-btn span {
@@ -118,7 +167,7 @@ header nav p strong {
     width: 100%;
     background-color: var(--cor-texto);
     border-radius: 2px;
-    transition: var(--transicao-rapida);
+    transition: var(--transicao-suave);
 }
 
 header ul {
@@ -133,11 +182,10 @@ header ul {
     list-style: none;
     padding: 12px 16px;
     gap: 8px;
-    
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #menu-toggle:checked ~ ul {
@@ -147,15 +195,16 @@ header ul {
 }
 
 #menu-toggle:checked ~ .menu-btn span:nth-child(1) {
-    transform: translateY(7.5px) rotate(45deg);
+    transform: translateY(8.5px) rotate(45deg);
 }
 #menu-toggle:checked ~ .menu-btn span:nth-child(2) {
     opacity: 0;
 }
 #menu-toggle:checked ~ .menu-btn span:nth-child(3) {
-    transform: translateY(-7.5px) rotate(-45deg);
+    transform: translateY(-8.5px) rotate(-45deg);
 }
 
+/* Links do Header (Hover / Focus / Active) */
 header a {
     color: var(--cor-texto-mudo);
     text-decoration: none;
@@ -165,7 +214,7 @@ header a {
     padding: 10px 12px;
     border-radius: var(--raio-sm);
     background-color: rgba(255, 255, 255, 0.02);
-    transition: var(--transicao-rapida);
+    transition: var(--transicao-suave);
 }
 
 header a:hover {
@@ -174,23 +223,18 @@ header a:hover {
     transform: translateX(4px);
 }
 
-/* ==========================================================================
-   4. TIPOGRAFIA E ANIMAÇÕES DE ENTRADA (Max 400ms)
-   ========================================================================== */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+header a:active {
+    color: #ffffff;
+    background-color: rgba(124, 58, 237, 0.25);
+    transform: translateX(2px) scale(0.98);
 }
 
+/* ==========================================================================
+   5. SEÇÕES, TIPOGRAFIA E CARDS (HOVER DE ELEVAÇÃO + SOMBRA)
+   ========================================================================== */
 section {
     margin-bottom: 24px;
-    animation: fadeIn 0.35s ease-out;
+    animation: fadeInPage 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 h1 {
@@ -214,82 +258,33 @@ p {
     line-height: 1.5;
 }
 
-/* Hero Section / Início */
-main > section:first-of-type:not(#sobre) {
-    text-align: left;
-    padding: 12px 0;
-}
-
-main > section:first-of-type:not(#sobre) p {
-    margin-bottom: 20px;
-}
-
-main > section:first-of-type:not(#sobre) div {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-}
-
-/* Botões com microinteração de Hover e Click */
-main > section:first-of-type:not(#sobre) div a,
-form button[type="submit"] {
-    display: block;
-    width: 100%;
-    padding: 12px 16px;
-    border-radius: var(--raio-md);
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    font-size: 14px;
-    transition: var(--transicao-rapida);
-    cursor: pointer;
-}
-
-main > section:first-of-type:not(#sobre) div a:first-child,
-form button[type="submit"] {
-    background-color: var(--cor-principal);
-    color: #ffffff;
-    border: none;
-}
-
-main > section:first-of-type:not(#sobre) div a:first-child:hover,
-form button[type="submit"]:hover {
-    background-color: var(--cor-principal-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
-}
-
-main > section:first-of-type:not(#sobre) div a:first-child:active,
-form button[type="submit"]:active {
-    transform: translateY(0);
-}
-
-main > section:first-of-type:not(#sobre) div a:last-child {
-    background-color: var(--cor-card);
-    color: var(--cor-texto);
-    border: 1px solid var(--cor-borda);
-}
-
-main > section:first-of-type:not(#sobre) div a:last-child:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-color: var(--cor-secundario);
-    transform: translateY(-2px);
-}
-
-/* Cards com hover sutil */
-#sobre, #como-funciona article, #campeonatos li {
+/* Cards com microinteração de elevação e brilho */
+#sobre, 
+#como-funciona article, 
+#campeonatos li {
     background-color: var(--cor-card);
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-md);
     padding: 16px;
-    transition: var(--transicao-rapida);
+    transition: var(--transicao-suave);
+    will-change: transform, box-shadow;
 }
 
-#sobre:hover, #como-funciona article:hover, #campeonatos li:hover {
-    border-color: rgba(6, 182, 212, 0.4);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+/* Card Hover - Sobe e ganha sombra */
+#sobre:hover, 
+#como-funciona article:hover, 
+#campeonatos li:hover {
+    transform: translateY(-4px);
+    border-color: rgba(6, 182, 212, 0.5);
+    box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.5), 0 0 15px rgba(6, 182, 212, 0.15);
+}
+
+/* Card Active - Pressionamento ao Clicar */
+#sobre:active, 
+#como-funciona article:active, 
+#campeonatos li:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.4);
 }
 
 #como-funciona {
@@ -323,23 +318,107 @@ main > section:first-of-type:not(#sobre) div a:last-child:hover {
     margin-bottom: 4px;
 }
 
-/* Links internos e artigos com hover */
+/* ==========================================================================
+   6. BOTÕES E LINKS (ESTADOS HOVER, FOCUS E ACTIVE)
+   ========================================================================== */
+main > section:first-of-type:not(#sobre) {
+    text-align: left;
+    padding: 12px 0;
+}
+
+main > section:first-of-type:not(#sobre) p {
+    margin-bottom: 20px;
+}
+
+main > section:first-of-type:not(#sobre) div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Botões Principais */
+main > section:first-of-type:not(#sobre) div a,
+form button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: var(--raio-md);
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    transition: var(--transicao-suave);
+    cursor: pointer;
+}
+
+/* Botão Primário (Roxo) */
+main > section:first-of-type:not(#sobre) div a:first-child,
+form button[type="submit"] {
+    background-color: var(--cor-principal);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+}
+
+main > section:first-of-type:not(#sobre) div a:first-child:hover,
+form button[type="submit"]:hover {
+    background-color: var(--cor-principal-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.45);
+}
+
+main > section:first-of-type:not(#sobre) div a:first-child:active,
+form button[type="submit"]:active {
+    background-color: var(--cor-principal-active);
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(124, 58, 237, 0.3);
+}
+
+/* Botão Secundário (Escuro / Transparente) */
+main > section:first-of-type:not(#sobre) div a:last-child {
+    background-color: var(--cor-card);
+    color: var(--cor-texto);
+    border: 1px solid var(--cor-borda);
+}
+
+main > section:first-of-type:not(#sobre) div a:last-child:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: var(--cor-secundario);
+    transform: translateY(-2px);
+    color: #ffffff;
+}
+
+main > section:first-of-type:not(#sobre) div a:last-child:active {
+    background-color: rgba(255, 255, 255, 0.03);
+    transform: translateY(0);
+}
+
+/* Links Textuais dentro dos Cards */
 article a, #campeonatos a {
-    transition: var(--transicao-rapida);
+    transition: var(--transicao-suave);
     display: inline-block;
 }
 
 article a:hover, #campeonatos a:hover {
     color: #ffffff !important;
-    transform: translateX(3px);
+    transform: translateX(4px);
 }
 
-/* Formulários */
+article a:active, #campeonatos a:active {
+    color: var(--cor-secundario) !important;
+    transform: translateX(2px);
+}
+
+/* ==========================================================================
+   7. FORMULÁRIOS E CAMPOS INTERATIVOS
+   ========================================================================== */
 form fieldset {
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-md);
     padding: 18px 14px;
     background-color: var(--cor-card);
+    transition: var(--transicao-suave);
 }
 
 form legend {
@@ -371,16 +450,24 @@ form select {
     color: var(--cor-texto);
     font-size: 14px;
     outline: none;
-    transition: var(--transicao-rapida);
+    transition: var(--transicao-suave);
+}
+
+form input:hover,
+form select:hover {
+    border-color: rgba(6, 182, 212, 0.4);
 }
 
 form input:focus,
 form select:focus {
     border-color: var(--cor-secundario);
-    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+    background-color: rgba(15, 23, 42, 0.8);
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
 }
 
-/* Rodapé */
+/* ==========================================================================
+   8. RODAPÉ E RESPONSIVIDADE (360PX+)
+   ========================================================================== */
 footer {
     background-color: #090d16;
     border-top: 1px solid var(--cor-borda);
@@ -406,16 +493,18 @@ footer a {
     color: var(--cor-texto-mudo);
     font-size: 13px;
     text-decoration: none;
-    transition: var(--transicao-rapida);
+    transition: var(--transicao-suave);
 }
 
 footer a:hover {
     color: var(--cor-secundario);
 }
 
-/* ==========================================================================
-   5. ADAPTAÇÃO RESPONSIVA PARA DESKTOP E TELA GIRADA (Landscape 360px+)
-   ========================================================================== */
+footer a:active {
+    color: var(--cor-principal);
+}
+
+/* Layout Desktop */
 @media (min-width: 768px) {
     main {
         padding: 40px 24px;
@@ -446,6 +535,10 @@ footer a:hover {
 
     header a:hover {
         transform: translateY(-2px);
+    }
+
+    header a:active {
+        transform: translateY(0);
     }
 
     h1 {
