@@ -3,86 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Torneios e Campeonatos - Arena Amador</title>
+    <title>Torneios e Campeonatos - GameMatch</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-    <nav aria-label="Navegação Principal">
-        <p><strong>Arena Amador</strong></p>
-        
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="menu-btn" aria-label="Abrir Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+        <nav aria-label="Navegação Principal">
+            <p><strong>GameMatch</strong></p>
+            
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-btn" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
 
-        <ul>
-            <li><a href="home.html">Início</a></li>
-            <li><a href="matchmaking.html">Buscar Duo / Time</a></li>
-            <li><a href="torneios.html">Torneios</a></li>
-            <li><a href="meuperfil.html">Meu Perfil</a></li>
-            <li><a href="sobreogrupo.html">Sobre o Grupo</a></li>
-        </ul>
-    </nav>
-</header>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li><a href="matchmaking.html">Procurar Duo</a></li>
+                <li><a href="torneios.html">Torneios</a></li>
+                <li><a href="meuperfil.html">Meu Perfil</a></li>
+                <li><a href="sobreogrupo.html">Sobre a Equipe</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
-        <h1>Campeonatos e Ligas Amadoras</h1>
-        <p>Inscreva sua equipe ou procure jogadores avulsos para completar seu time nos torneios oficiais.</p>
+        <h1>Arena de Campeonatos</h1>
+        <p>Mostre do que sua equipe é capaz. Inscreva seu time nos torneios amadores da semana e dispute premiações.</p>
 
         <section id="campeonatos">
-            <h2>Torneios com Inscrições Abertas</h2>
+            <h2>Campeonatos Abertos</h2>
             <ul>
                 <li>
-                    <strong>Copa Amadora Free Fire (Emuladores)</strong>
-                    <p>Formato: Squad 4v4 | Vagas: 28/32 Times</p>
-                    <p style="color: var(--cor-secundario); font-weight: 600; margin-top: 4px;">Premiação: R$ 1.500,00</p>
+                    <strong>Copa Amadora Free Fire (Emulador)</strong>
+                    <p>Formato: Squad 4v4 | Vagas: 28 de 32 preenchidas</p>
+                    <p style="color: var(--cor-secundario); font-weight: 600; margin-top: 6px;">Premiação: R$ 1.500,00</p>
                 </li>
                 <li>
-                    <strong>Liga Wild Rift Tier Amador</strong>
-                    <p>Formato: 5v5 | Vagas: 12/16 Times</p>
-                    <p style="color: var(--cor-secundario); font-weight: 600; margin-top: 4px;">Premiação: Gift Cards + Troféu</p>
+                    <strong>Liga Wild Rift - Open Series</strong>
+                    <p>Formato: 5v5 | Vagas: 12 de 16 preenchidas</p>
+                    <p style="color: var(--cor-secundario); font-weight: 600; margin-top: 6px;">Premiação: Gift Cards + Troféu Digital</p>
                 </li>
             </ul>
         </section>
 
-        <!-- Formulário de Inscrição de Equipe -->
+        <!-- Formulário de Inscrição -->
         <section id="cadastro">
-            <h2>Inscrever Equipe no Torneio</h2>
+            <h2>Inscrever Meu Time</h2>
             <form action="torneios.html" method="POST">
                 <fieldset>
-                    <legend>Dados da Inscrição</legend>
+                    <legend>Dados do Squad</legend>
                     <div>
                         <label for="time">Nome da Equipe:</label>
-                        <input type="text" id="time" name="time" placeholder="Ex: Alpha Esports" required>
+                        <input type="text" id="time" name="time" placeholder="Ex: Alpha E-Sports" required>
                     </div>
                     <div>
-                        <label for="campeonato-escolhido">Selecionar Campeonato:</label>
+                        <label for="campeonato-escolhido">Escolha o Campeonato:</label>
                         <select id="campeonato-escolhido" name="campeonato">
                             <option value="ff">Copa Amadora Free Fire</option>
-                            <option value="wr">Liga Wild Rift Amadora</option>
+                            <option value="wr">Liga Wild Rift Open Series</option>
                         </select>
                     </div>
                     <div>
-                        <label for="capitao">Nick do Capitão:</label>
+                        <label for="capitao">Seu Nick (Capitão / Responsável):</label>
                         <input type="text" id="capitao" name="capitao" placeholder="Ex: Captain#1234" required>
                     </div>
-                    <button type="submit">Confirmar Inscrição</button>
+                    <button type="submit">Garantir Vaga da Equipe</button>
                 </fieldset>
             </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Arena Amador / GameMatch. Todos os direitos reservados.</p>
+        <p>&copy; 2026 GameMatch / Arena Amador. Todos os direitos reservados.</p>
         <nav aria-label="Links Rodapé">
             <ul>
                 <li><a href="home.html">Início</a></li>
-                <li><a href="matchmaking.html">Buscar Duo</a></li>
-                <li><a href="sobreogrupo.html">Sobre o Grupo</a></li>
+                <li><a href="matchmaking.html">Procurar Duo</a></li>
+                <li><a href="sobreogrupo.html">Sobre a Equipe</a></li>
             </ul>
         </nav>
     </footer>
