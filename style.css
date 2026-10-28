@@ -15,6 +15,7 @@
     --raio-sm: 8px;
     --raio-md: 12px;
     --largura-maxima: 1000px;
+    --transicao-rapida: 0.25s ease;
 }
 
 *, *::before, *::after {
@@ -36,6 +37,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 main {
@@ -43,17 +45,30 @@ main {
     max-width: var(--largura-maxima);
     width: 100%;
     margin: 0 auto;
-    padding: 16px 12px;
+    padding: 20px 16px;
+    animation: fadeIn 0.35s ease-out;
 }
 
 /* ==========================================================================
-   2. CABEÇALHO MOBILE / APP (MENU HAMBÚRGUER CSS PURO)
+   2. ACESSIBILIDADE E ESTADOS DE FOCO (Visível com Tab)
+   ========================================================================== */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+label:focus-visible {
+    outline: 2px solid var(--cor-secundario);
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   3. CABEÇALHO E MENU HAMBÚRGUER (CSS PURO)
    ========================================================================== */
 header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: rgba(15, 23, 42, 0.98);
+    background-color: rgba(15, 23, 42, 0.95);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--cor-borda);
 }
@@ -64,12 +79,12 @@ header nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 14px;
+    padding: 12px 16px;
     position: relative;
 }
 
 header nav p strong {
-    font-size: 17px;
+    font-size: 18px;
     letter-spacing: -0.5px;
     background: linear-gradient(135deg, #fff 30%, var(--cor-secundario) 100%);
     -webkit-background-clip: text;
@@ -84,19 +99,26 @@ header nav p strong {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 22px;
-    height: 16px;
+    width: 24px;
+    height: 18px;
     cursor: pointer;
     z-index: 1010;
+    padding: 2px;
+    border-radius: 4px;
+    transition: var(--transicao-rapida);
+}
+
+.menu-btn:hover span {
+    background-color: var(--cor-secundario);
 }
 
 .menu-btn span {
     display: block;
-    height: 2px;
+    height: 2.5px;
     width: 100%;
     background-color: var(--cor-texto);
     border-radius: 2px;
-    transition: all 0.3s ease;
+    transition: var(--transicao-rapida);
 }
 
 header ul {
@@ -109,119 +131,138 @@ header ul {
     background-color: #0d1322;
     border-bottom: 1px solid var(--cor-borda);
     list-style: none;
-    padding: 10px 14px;
-    gap: 6px;
+    padding: 12px 16px;
+    gap: 8px;
     
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #menu-toggle:checked ~ ul {
-    max-height: 320px;
+    max-height: 350px;
     opacity: 1;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
 }
 
 #menu-toggle:checked ~ .menu-btn span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+    transform: translateY(7.5px) rotate(45deg);
 }
 #menu-toggle:checked ~ .menu-btn span:nth-child(2) {
     opacity: 0;
 }
 #menu-toggle:checked ~ .menu-btn span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+    transform: translateY(-7.5px) rotate(-45deg);
 }
 
 header a {
     color: var(--cor-texto-mudo);
     text-decoration: none;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
     display: block;
-    padding: 8px 10px;
+    padding: 10px 12px;
     border-radius: var(--raio-sm);
     background-color: rgba(255, 255, 255, 0.02);
+    transition: var(--transicao-rapida);
 }
 
 header a:hover {
     color: var(--cor-secundario);
-    background-color: rgba(6, 182, 212, 0.1);
+    background-color: rgba(6, 182, 212, 0.12);
+    transform: translateX(4px);
 }
 
 /* ==========================================================================
-   3. TIPOGRAFIA FLUÍDA E ALinhamento Mobile
+   4. TIPOGRAFIA E ANIMAÇÕES DE ENTRADA (Max 400ms)
    ========================================================================== */
-section {
-    margin-bottom: 20px;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Títulos com tamanho inteligente que se adaptam perfeitamente a ecrãs estreitos */
+section {
+    margin-bottom: 24px;
+    animation: fadeIn 0.35s ease-out;
+}
+
 h1 {
-    font-size: clamp(19px, 5.5vw, 28px);
+    font-size: clamp(20px, 5.5vw, 30px);
     font-weight: 700;
     line-height: 1.25;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     color: #ffffff;
-    text-align: left;
 }
 
 h2 {
-    font-size: clamp(16px, 4.5vw, 22px);
+    font-size: clamp(17px, 4.5vw, 22px);
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     color: #ffffff;
 }
 
-/* Parágrafos explicativos gerais no mobile */
-main > p, main > section > p {
-    text-align: left;
-    font-size: 13.5px;
+p {
+    font-size: 14px;
     color: var(--cor-texto-mudo);
-    margin-bottom: 16px;
-    line-height: 1.45;
+    line-height: 1.5;
 }
 
-/* Hero Section / Início do Site */
+/* Hero Section / Início */
 main > section:first-of-type:not(#sobre) {
     text-align: left;
     padding: 12px 0;
 }
 
-main > section:first-of-type:not(#sobre) h1 {
-    font-size: clamp(20px, 6vw, 30px);
-    margin-bottom: 8px;
-}
-
 main > section:first-of-type:not(#sobre) p {
-    font-size: 13.5px;
-    color: var(--cor-texto-mudo);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
-/* Botões Empilhados e Modernos */
 main > section:first-of-type:not(#sobre) div {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     width: 100%;
 }
 
-main > section:first-of-type:not(#sobre) div a {
+/* Botões com microinteração de Hover e Click */
+main > section:first-of-type:not(#sobre) div a,
+form button[type="submit"] {
     display: block;
     width: 100%;
-    padding: 11px 14px;
+    padding: 12px 16px;
     border-radius: var(--raio-md);
     font-weight: 600;
     text-align: center;
     text-decoration: none;
-    font-size: 13.5px;
+    font-size: 14px;
+    transition: var(--transicao-rapida);
+    cursor: pointer;
 }
 
-main > section:first-of-type:not(#sobre) div a:first-child {
+main > section:first-of-type:not(#sobre) div a:first-child,
+form button[type="submit"] {
     background-color: var(--cor-principal);
     color: #ffffff;
+    border: none;
+}
+
+main > section:first-of-type:not(#sobre) div a:first-child:hover,
+form button[type="submit"]:hover {
+    background-color: var(--cor-principal-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
+}
+
+main > section:first-of-type:not(#sobre) div a:first-child:active,
+form button[type="submit"]:active {
+    transform: translateY(0);
 }
 
 main > section:first-of-type:not(#sobre) div a:last-child {
@@ -230,148 +271,150 @@ main > section:first-of-type:not(#sobre) div a:last-child {
     border: 1px solid var(--cor-borda);
 }
 
-/* Cards Gerais */
-#sobre {
-    background-color: var(--cor-card);
-    padding: 14px;
-    border-radius: var(--raio-md);
-    border: 1px solid var(--cor-borda);
+main > section:first-of-type:not(#sobre) div a:last-child:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--cor-secundario);
+    transform: translateY(-2px);
 }
 
-#sobre p {
-    color: var(--cor-texto-mudo);
-    font-size: 13.5px;
+/* Cards com hover sutil */
+#sobre, #como-funciona article, #campeonatos li {
+    background-color: var(--cor-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-md);
+    padding: 16px;
+    transition: var(--transicao-rapida);
+}
+
+#sobre:hover, #como-funciona article:hover, #campeonatos li:hover {
+    border-color: rgba(6, 182, 212, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 #como-funciona {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-
-#como-funciona article {
-    background-color: var(--cor-card);
-    padding: 14px;
-    border-radius: var(--raio-md);
-    border: 1px solid var(--cor-borda);
+    gap: 12px;
 }
 
 #como-funciona h3 {
-    font-size: 14.5px;
+    font-size: 15px;
     color: var(--cor-secundario);
-    margin-bottom: 4px;
-}
-
-#como-funciona p {
-    color: var(--cor-texto-mudo);
-    font-size: 13px;
+    margin-bottom: 6px;
 }
 
 /* Campeonatos */
 #campeonatos ul {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     list-style: none;
 }
 
 #campeonatos li {
-    background-color: var(--cor-card);
-    padding: 12px;
-    border-radius: var(--raio-md);
-    border-left: 3px solid var(--cor-principal);
-    border: 1px solid var(--cor-borda);
+    border-left: 4px solid var(--cor-principal);
 }
 
 #campeonatos strong {
     color: #ffffff;
-    font-size: 13.5px;
+    font-size: 14px;
     display: block;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
+}
+
+/* Links internos e artigos com hover */
+article a, #campeonatos a {
+    transition: var(--transicao-rapida);
+    display: inline-block;
+}
+
+article a:hover, #campeonatos a:hover {
+    color: #ffffff !important;
+    transform: translateX(3px);
 }
 
 /* Formulários */
 form fieldset {
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-md);
-    padding: 14px 10px;
+    padding: 18px 14px;
     background-color: var(--cor-card);
 }
 
 form legend {
     color: var(--cor-secundario);
     font-weight: 700;
-    padding: 0 6px;
-    font-size: 12.5px;
+    padding: 0 8px;
+    font-size: 13px;
 }
 
 form div {
-    margin-bottom: 10px;
+    margin-bottom: 14px;
 }
 
 form label {
     display: block;
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 500;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 
 form input[type="text"],
 form input[type="email"],
 form select {
     width: 100%;
-    padding: 9px 10px;
+    padding: 11px 12px;
     background-color: var(--cor-fundo);
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-sm);
     color: var(--cor-texto);
-    font-size: 13.5px;
+    font-size: 14px;
     outline: none;
+    transition: var(--transicao-rapida);
 }
 
-form button[type="submit"] {
-    width: 100%;
-    padding: 11px;
-    background-color: var(--cor-principal);
-    color: #ffffff;
-    border: none;
-    border-radius: var(--raio-sm);
-    font-size: 13.5px;
-    font-weight: 600;
-    cursor: pointer;
+form input:focus,
+form select:focus {
+    border-color: var(--cor-secundario);
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
 }
 
 /* Rodapé */
 footer {
     background-color: #090d16;
     border-top: 1px solid var(--cor-borda);
-    padding: 16px 12px;
-    margin-top: 24px;
+    padding: 24px 16px;
+    margin-top: 40px;
     text-align: center;
 }
 
 footer p {
-    color: var(--cor-texto-mudo);
-    font-size: 11.5px;
-    margin-bottom: 8px;
+    font-size: 12px;
+    margin-bottom: 12px;
 }
 
 footer ul {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 14px;
     list-style: none;
     flex-wrap: wrap;
 }
 
 footer a {
     color: var(--cor-texto-mudo);
-    font-size: 11.5px;
+    font-size: 13px;
     text-decoration: none;
+    transition: var(--transicao-rapida);
+}
+
+footer a:hover {
+    color: var(--cor-secundario);
 }
 
 /* ==========================================================================
-   4. ADAPTAÇÃO PARA DESKTOP (Telas Maiores)
+   5. ADAPTAÇÃO RESPONSIVA PARA DESKTOP E TELA GIRADA (Landscape 360px+)
    ========================================================================== */
 @media (min-width: 768px) {
     main {
@@ -392,6 +435,7 @@ footer a {
         padding: 0;
         gap: 8px;
         width: auto;
+        box-shadow: none;
     }
 
     header a {
@@ -400,8 +444,11 @@ footer a {
         font-size: 15px;
     }
 
+    header a:hover {
+        transform: translateY(-2px);
+    }
+
     h1 {
-        text-align: left;
         font-size: 34px;
     }
 
@@ -412,11 +459,13 @@ footer a {
 
     main > section:first-of-type:not(#sobre) h1 {
         font-size: 38px;
-        text-align: center;
     }
 
     main > section:first-of-type:not(#sobre) p {
         text-align: center;
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     main > section:first-of-type:not(#sobre) div {
