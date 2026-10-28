@@ -4,138 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arena Amador - Matchmaking e Campeonatos para o Seu Nível</title>
-      <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Cabeçalho Principal -->
+    <!-- Cabeçalho com Menu Hambúrguer (CSS Puro) -->
     <header>
-    <nav aria-label="Navegação Principal">
-        <p><strong>Arena Amador</strong></p>
-        
-        <!-- Checkbox invisível e botão hambúrguer -->
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="menu-btn" aria-label="Abrir Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+        <nav aria-label="Navegação Principal">
+            <p><strong>Arena Amador</strong></p>
+            
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-btn" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
 
-        <ul>
-            <li><a href="home.html">Início</a></li>
-            <li><a href="matchmaking.html">Buscar Duo / Time</a></li>
-            <li><a href="torneios.html">Torneios</a></li>
-            <li><a href="meuperfil.html">Meu Perfil</a></li>
-            <li><a href="sobreogrupo.html">Sobre o Grupo</a></li>
-        </ul>
-    </nav>
-</header>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li><a href="matchmaking.html">Buscar Duo / Time</a></li>
+                <li><a href="torneios.html">Torneios</a></li>
+                <li><a href="meuperfil.html">Meu Perfil</a></li>
+                <li><a href="sobreogrupo.html">Sobre o Grupo</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <!-- Conteúdo Principal -->
     <main>
-
-        <!-- Seção de Apresentação (Hero) -->
+        <!-- Hero Section -->
         <section>
             <h1>Jogue com quem tem o seu nível real. Evolua sem frustrações.</h1>
             <p>Chega de partidas desequilibradas com jogadores abaixo do seu patamar ou que não levam o treino a sério. Nossa plataforma une jogadores amadores do mesmo nível técnico para treinar, entrosar e competir.</p>
             <div>
-                <a href="#cadastro">Criar Conta Gratuita</a>
-                <a href="#como-funciona">Saiba Como Funciona</a>
+                <a href="matchmaking.html">Encontrar Duo Agora</a>
+                <a href="torneios.html">Ver Torneios Disponíveis</a>
             </div>
         </section>
 
-        <!-- Seção Sobre o Problema -->
+        <!-- Sobre o Problema -->
         <section id="sobre">
-            <h2>O Problema que Resolvemos no Cenário Amador</h2>
-            <p>Muitos jogadores amadores encontram dificuldades para treinar e evoluir porque caem em partidas aleatórias com grandes disparidades técnicas. Nós criamos um ambiente seguro, justo e estruturado para que você encontre parceiros de equipe e adversários rigorosamente do seu nível.</p>
+            <h2>O Problema que Resolvemos</h2>
+            <p>Muitos jogadores amadores encontram dificuldades para treinar e evoluir porque caem em partidas aleatórias com grandes disparidades técnicas. Nós criamos um ambiente seguro, justo e estruturado.</p>
         </section>
 
-        <!-- Seção Como Funciona (Artigos Estruturados) -->
+        <!-- Como Funciona -->
         <section id="como-funciona">
             <h2>Como o Aplicativo Funciona</h2>
             
             <article>
                 <h3>1. Calibração de Nível</h3>
-                <p>Avaliamos seu perfil e histórico para encaixá-lo na categoria exata correspondente à sua habilidade, eliminando o desnível técnico nas partidas.</p>
+                <p>Avaliamos seu perfil e histórico para encaixá-lo na categoria exata correspondente à sua habilidade.</p>
             </article>
 
             <article>
                 <h3>2. Conexão e Treinos</h3>
-                <p>Encontre jogadores e times da mesma categoria para realizar treinos focados em táticas, comunicação e sinergia, elevando o nível do seu jogo em conjunto.</p>
+                <p>Encontre jogadores e times da mesma categoria para realizar treinos focados em táticas e sinergia.</p>
             </article>
 
             <article>
-                <h3>3. Campeonatos Exclusivos por Categoria</h3>
-                <p>Participe de torneios organizados de acordo com os jogos que você ama e o seu tier técnico, garantindo disputas competitivas e justas do início ao fim.</p>
+                <h3>3. Campeonatos Exclusivos</h3>
+                <p>Participe de torneios organizados de acordo com os jogos que você ama e o seu tier técnico.</p>
             </article>
         </section>
 
-        <!-- Seção de Campeonatos -->
+        <!-- Campeonatos Rápidos -->
         <section id="campeonatos">
-            <h2>Campeonatos por Jogo</h2>
+            <h2>Campeonatos em Destaque</h2>
             <p>Dispute torneios balanceados para a sua categoria em diversos títulos competitivos:</p>
             <ul>
                 <li>
-                    <strong>Counter-Strike (CS2)</strong> — Torneios semanais divididos por tiers amadores.
+                    <strong>Counter-Strike (CS2)</strong>
+                    <p>Torneios semanais divididos por tiers amadores.</p>
+                    <a href="torneios.html" style="color: var(--cor-secundario); font-size: 13px; text-decoration: none; margin-top: 4px; display: inline-block;">Ver Detalhes →</a>
                 </li>
                 <li>
-                    <strong>Valorant</strong> — Confrontos equilibrados para duplas e equipes fechadas.
+                    <strong>Valorant</strong>
+                    <p>Confrontos equilibrados para duplas e equipes fechadas.</p>
+                    <a href="torneios.html" style="color: var(--cor-secundario); font-size: 13px; text-decoration: none; margin-top: 4px; display: inline-block;">Ver Detalhes →</a>
                 </li>
                 <li>
-                    <strong>League of Legends (LoL)</strong> — Campeonatos estruturados com foco no meta e fair play.
+                    <strong>League of Legends (LoL)</strong>
+                    <p>Campeonatos estruturados com foco no meta e fair play.</p>
+                    <a href="torneios.html" style="color: var(--cor-secundario); font-size: 13px; text-decoration: none; margin-top: 4px; display: inline-block;">Ver Detalhes →</a>
                 </li>
                 <li>
-                    <strong>Rocket League</strong> — Disputas intensas 3v3 e 2v2 no seu nível exato.
+                    <strong>Free Fire (Mobile/Emulador)</strong>
+                    <p>Disputas intensas de Squad no seu nível exato.</p>
+                    <a href="torneios.html" style="color: var(--cor-secundario); font-size: 13px; text-decoration: none; margin-top: 4px; display: inline-block;">Ver Detalhes →</a>
                 </li>
             </ul>
         </section>
 
-        <!-- Seção de Cadastro / Chamada para Ação -->
+        <!-- Chamada para Ação / Cadastro Rápido -->
         <section id="cadastro">
             <h2>Pronto para elevar o seu jogo?</h2>
             <p>Faça parte da nossa comunidade e comece a jogar com quem realmente está no seu patamar.</p>
             
-            <form action="#" method="POST">
+            <form action="meuperfil.html" method="GET">
                 <fieldset>
                     <legend>Cadastro Rápido</legend>
                     
                     <div>
                         <label for="nome">Nome de Usuário (Nick):</label>
-                        <input type="text" id="nome" name="nome" required>
+                        <input type="text" id="nome" name="nome" placeholder="Ex: ShadowHunter" required>
                     </div>
 
                     <div>
                         <label for="email">E-mail:</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
                     </div>
 
                     <div>
                         <label for="jogo">Principal Jogo:</label>
                         <select id="jogo" name="jogo">
-                            <option value="cs2">Counter-Strike 2</option>
+                            <option value="ff">Free Fire (Mobile/Emulador)</option>
                             <option value="valorant">Valorant</option>
                             <option value="lol">League of Legends</option>
-                            <option value="rocket-league">Rocket League</option>
+                            <option value="cs2">Counter-Strike 2</option>
                         </select>
                     </div>
 
                     <div>
-                        <button type="submit">Cadastrar e Encontrar meu Nível</button>
+                        <button type="submit">Criar Conta e Acessar Perfil</button>
                     </div>
                 </fieldset>
             </form>
         </section>
-
     </main>
 
     <!-- Rodapé -->
     <footer>
-        <p>&copy; 2026 Arena Amador. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Arena Amador / GameMatch. Todos os direitos reservados.</p>
         <nav aria-label="Links Rodapé">
             <ul>
-                <li><a href="#termos">Termos de Uso</a></li>
-                <li><a href="#privacidade">Política de Privacidade</a></li>
-                <li><a href="#suporte">Suporte e Contato</a></li>
+                <li><a href="home.html">Início</a></li>
+                <li><a href="matchmaking.html">Buscar Duo</a></li>
+                <li><a href="torneios.html">Torneios</a></li>
+                <li><a href="sobreogrupo.html">Sobre o Grupo</a></li>
             </ul>
         </nav>
     </footer>
