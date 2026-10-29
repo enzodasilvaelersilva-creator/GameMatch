@@ -1,18 +1,8 @@
-/* ==========================================
-   RESET & PREVENÇÃO DE OVERFLOW (Mobilidade 360px)
-   ========================================== */
-*,
-*::before,
-*::after {
-    box-sizing: border-box; /* Garante que padding e borders não aumentem a largura total */
+/* Reset básico e Estilos Gerais */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden; /* Elimina a rolagem horizontal indesejada no mobile */
 }
 
 body {
@@ -23,184 +13,146 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px 16px; /* Padding reduzido para telas menores */
+    padding: 40px 20px;
 }
 
-/* ==========================================
-   ACESSIBILIDADE DE FOCO (Teclas TAB / Navegação)
-   ========================================== */
-/* Garante foco visível e brilhante em qualquer elemento interativo */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible,
-[tabindex]:focus-visible {
-    outline: 3px solid #00f3ff !important;
-    outline-offset: 4px !important;
-    box-shadow: 0 0 15px rgba(0, 243, 255, 0.9) !important;
-}
-
-/* ==========================================
-   LAYOUT CONTAINERS RESPONSIVOS
-   ========================================== */
 .container {
     max-width: 650px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 32px;
 }
 
 h1 {
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     background: linear-gradient(135deg, #ff007f, #7928ca, #00dfd8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 8px;
-    word-wrap: break-word;
 }
 
 .section {
     background: #12131c;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 20px;
+    padding: 28px;
     border-radius: 16px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    width: 100%;
 }
 
 .section h2 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #a0a5c0;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 /* ==========================================
-   1. BOTÕES (3 Efeitos Distintos & Responsivos)
+   1. BOTÕES COLORIDOS
    ========================================== */
 .button-group {
     display: flex;
-    gap: 12px;
-    flex-wrap: wrap; /* Permite quebrar linha caso a tela seja pequena */
-    width: 100%;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 .btn {
-    padding: 14px 20px;
-    font-size: 0.95rem;
+    padding: 14px 28px;
+    font-size: 1rem;
     font-weight: 700;
     border-radius: 10px;
     cursor: pointer;
     border: none;
     outline: none;
-    position: relative;
-    overflow: hidden;
-    flex: 1 1 180px; /* Adapta o tamanho automaticamente e quebra de forma fluida */
-    text-align: center;
+    /* Transições sempre mantidas abaixo de 400ms */
+    transition: transform 200ms ease, box-shadow 250ms ease, background 300ms ease, border-color 250ms ease;
 }
 
-/* --- BOTÃO 1: Pulse & Scale --- */
-.btn-pulse {
+/* Regra de Acessibilidade: Foco visível ao usar a tecla TAB */
+.btn:focus-visible {
+    outline: 3px solid #00ffff;
+    outline-offset: 4px;
+    box-shadow: 0 0 15px #00ffff;
+}
+
+/* Botão 1: Sunset Glow (Gradiente Rosa/Laranja) */
+.btn-sunset {
     background: linear-gradient(135deg, #ff007f, #ff758c);
     color: #fff;
     box-shadow: 0 4px 15px rgba(255, 0, 127, 0.3);
-    transition: transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 200ms ease;
+}
+.btn-sunset:hover {
+    background: linear-gradient(135deg, #ff1a8c, #ff8da1);
+    box-shadow: 0 6px 25px rgba(255, 0, 127, 0.6);
+    transform: translateY(-2px);
+}
+.btn-sunset:active {
+    transform: translateY(1px) scale(0.96);
+    box-shadow: 0 2px 10px rgba(255, 0, 127, 0.4);
 }
 
-.btn-pulse:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
-}
-
-.btn-pulse:active {
-    transform: scale(0.95);
-    box-shadow: 0 2px 8px rgba(255, 0, 127, 0.4);
-}
-
-/* --- BOTÃO 2: Slide Fill --- */
-.btn-slide {
+/* Botão 2: Cyber Neon (Borda Neon Vasada) */
+.btn-cyber {
     background: transparent;
     color: #00f3ff;
     border: 2px solid #00f3ff;
-    z-index: 1;
-    transition: color 250ms ease, border-color 250ms ease, box-shadow 250ms ease, transform 150ms ease;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
 }
-
-.btn-slide::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, #00f3ff, #0088ff);
-    z-index: -1;
-    transition: left 250ms ease-in-out;
-}
-
-.btn-slide:hover::before {
-    left: 0;
-}
-
-.btn-slide:hover {
-    color: #000;
+.btn-cyber:hover {
+    background: rgba(0, 243, 255, 0.15);
     box-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+    transform: translateY(-2px);
+}
+.btn-cyber:active {
+    transform: translateY(1px) scale(0.96);
 }
 
-.btn-slide:active {
-    transform: scale(0.95);
-}
-
-/* --- BOTÃO 3: Elevate 3D & Glow --- */
-.btn-elevate {
-    background: linear-gradient(135deg, #7928ca, #b828ca);
+/* Botão 3: Electric Violet (Gradiente Roxo/Azul) */
+.btn-violet {
+    background: linear-gradient(135deg, #7928ca, #4388dd);
     color: #fff;
-    box-shadow: 0 4px 0px #4d1885, 0 6px 15px rgba(121, 40, 202, 0.4);
-    transition: transform 200ms ease, box-shadow 200ms ease;
+    box-shadow: 0 4px 15px rgba(121, 40, 202, 0.4);
+}
+.btn-violet:hover {
+    background: linear-gradient(135deg, #8a3ade, #5499ee);
+    box-shadow: 0 6px 25px rgba(121, 40, 202, 0.7);
+    transform: translateY(-2px);
+}
+.btn-violet:active {
+    transform: translateY(1px) scale(0.96);
 }
 
-.btn-elevate:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 0px #4d1885, 0 12px 25px rgba(184, 40, 202, 0.7);
-}
-
-.btn-elevate:active {
-    transform: translateY(2px);
-    box-shadow: 0 2px 0px #4d1885, 0 4px 10px rgba(121, 40, 202, 0.5);
-}
 
 /* ==========================================
-   2. CARD NEON COM FADE-IN E HOVER
+   2. CARD NEON COM FADE-IN E ELEVAÇÃO
    ========================================== */
 .card {
     background: #181a26;
-    padding: 20px;
+    padding: 24px;
     border-radius: 14px;
     border: 1px solid rgba(121, 40, 202, 0.3);
-    width: 100%;
-    word-wrap: break-word; /* Impede estouro de textos longos */
+    position: relative;
+    /* Transições rápidas para hover */
     transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+    /* Animação de entrada com fade-in ao carregar a página */
     animation: fadeInCard 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
     border-color: #ff007f;
     box-shadow: 0 12px 30px rgba(255, 0, 127, 0.3), 0 0 20px rgba(121, 40, 202, 0.2);
 }
 
 .card h3 {
     color: #ff007f;
-    margin-bottom: 8px;
-    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
 }
 
 .card p {
     color: #b0b5d0;
     line-height: 1.5;
-    font-size: 0.95rem;
 }
 
 @keyframes fadeInCard {
@@ -214,38 +166,39 @@ h1 {
     }
 }
 
+
 /* ==========================================
    3. SPINNERS COLORIDOS (CSS Puro)
    ========================================== */
 .spinner-group {
     display: flex;
-    gap: 24px;
+    gap: 40px;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 .spinner-box {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     color: #b0b5d0;
     font-weight: 500;
 }
 
 .spinner {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     animation: rotate 800ms linear infinite;
-    flex-shrink: 0;
 }
 
+/* Spinner 1: Cyan Glow */
 .spinner-cyan {
     border: 4px solid rgba(0, 243, 255, 0.15);
     border-top-color: #00f3ff;
     box-shadow: 0 0 12px rgba(0, 243, 255, 0.4);
 }
 
+/* Spinner 2: Arco-íris / Multicolor */
 .spinner-rainbow {
     border: 4px solid rgba(255, 255, 255, 0.1);
     border-top-color: #ff007f;
@@ -256,27 +209,5 @@ h1 {
 @keyframes rotate {
     to {
         transform: rotate(360deg);
-    }
-}
-
-/* ==========================================
-   MEDIA QUERIES (Ajustes finos para Mobile 360px)
-   ========================================== */
-@media (max-width: 480px) {
-    body {
-        padding: 16px 12px;
-    }
-
-    .button-group {
-        flex-direction: column; /* Empilha os botões em ecrãs muito pequenos */
-    }
-
-    .btn {
-        width: 100%;
-        flex: 1 1 100%;
-    }
-
-    h1 {
-        font-size: 1.5rem;
     }
 }
